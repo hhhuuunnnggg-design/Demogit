@@ -1,11 +1,10 @@
 package doan;
-
 import java.util.Scanner;
 
 public class Nhacungcap {
     public static void main(String[] args) {
-        DANHSACH ncc = new DANHSACH();
-        	ncc.goi1();
+        DANHSACH ncc ;
+        DANHSACH.goi1();
     }
 }
 
@@ -40,9 +39,9 @@ class chitiet {
         System.out.println("Tên nhà cung cấp: " + tennhacungcap);
         System.out.println("Địa chỉ nhà cung cấp: " + diachi);
     }
+
     public void xuat1() {
-    	
-    	System.out.println("Tên nhà cung cấp: "+tennhacungcap);
+        System.out.println("Tên nhà cung cấp: " + tennhacungcap);
     }
 
     public int getManhacungcap() {
@@ -71,18 +70,16 @@ class chitiet {
 }
 
 class DANHSACH {
-    protected int n;
-    protected chitiet[] ct;
-    protected int max = 50;
-    
- 
-    
-    public DANHSACH() {
-      this.n = 0; // Khởi tạo số lượng nhà cung cấp là 0
-        this.ct = new chitiet[max];
+    protected static int n;
+    protected static chitiet[] ct;
+    protected static int max = 50;
+
+    static {
+        n = 0; // Khởi tạo số lượng nhà cung cấp là 0
+        ct = new chitiet[max];
     }
 
-    public void nhapds() {
+    public static void nhapds() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap so luong nha cung cap: ");
         n = sc.nextInt();
@@ -92,29 +89,29 @@ class DANHSACH {
             ct[i].nhap();
         }
     }
-    
-    public  void codecung(chitiet ct) {
-    	if(n<max) {
-    		this.ct[n]= ct;
-    		n++;
-    	}
-    	else {
-    		System.out.println("Danh sách đã đầy");
-    	}
+
+    public static void codecung(chitiet ct) {
+        if (n < max) {
+        	DANHSACH.ct[n] = ct;
+            n++;
+        } else {
+            System.out.println("Danh sách đã đầy");
+        }
     }
 
-    public void xuatds() {
+    public static void xuatds() {
         for (int i = 0; i < n; i++) {
             ct[i].xuat();
         }
     }
-    public void xuatds1() {
-    	for(int i=0 ;i<n ; i++) {
-    		ct[i].xuat1();
-    	}
+
+    public static void xuatds1() {
+        for (int i = 0; i < n; i++) {
+            ct[i].xuat1();
+        }
     }
 
-    public void themds() {
+    public static void themds() {
         Scanner sc = new Scanner(System.in);
         System.out.println("===================================");
         System.out.println("Nhap thong tin nha cung cap: ");
@@ -127,7 +124,7 @@ class DANHSACH {
                 break;
             }
         }
-        if (kt==false) {
+        if (!kt) {
             ct[n] = newct;
             n++;
             System.out.println("Da them thanh cong!");
@@ -136,7 +133,7 @@ class DANHSACH {
         }
     }
 
-    public void xoads() {
+    public static void xoads() {
         System.out.println("=================================");
         System.out.print("Nhap Ma so Nha cung cap can xoa: ");
         Scanner sc = new Scanner(System.in);
@@ -158,7 +155,7 @@ class DANHSACH {
         }
     }
 
-    public void timkiemds() {
+    public static void timkiemds() {
         System.out.println("==================================");
         System.out.print("Nhap ma nha cung cap can tim kiem: ");
         Scanner sc = new Scanner(System.in);
@@ -176,10 +173,11 @@ class DANHSACH {
             System.out.println("Khong tim thay ma nha cung cap");
         }
     }
-    public void timkiemds1() {
-    	boolean tiptuc=true;
+
+    public static void timkiemds1() {
+        boolean tiptuc = true;
         while (tiptuc) {
-        	System.out.println("**********************************");
+            System.out.println("**********************************");
             System.out.println("1. Tìm kiếm theo mã nhà cung cấp");
             System.out.println("2. Tìm kiếm theo tên nhà cung cấp");
             System.out.println("3. Quay về Menu");
@@ -220,23 +218,23 @@ class DANHSACH {
                     }
                     break;
                 case 3:
-                	DANHSACH ds;
-                	DANHSACH.goi1();
-                	break;
+                    DANHSACH ds;
+                    DANHSACH.goi1();
+                    break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long chon lai.");
                     break;
             }
         }
     }
-   
-    public static  void goi1() {
-    	DANHSACH ds = new DANHSACH();
-    	ds.codecung(new chitiet (123,"Phong Vũ","Sài Gòn") );
-    	ds.codecung(new chitiet (456,"Minh Long","Long An") );
-    	ds.codecung(new chitiet (789,"FPT","Hà Nội") );
-    	ds.codecung(new chitiet (112,"Phương Hằng","Công Viên Thủy Tinh") );
-    	ds.codecung(new chitiet (113,"Phan Anh","Hải Phòng") );
+
+    public static void goi1() {
+        //DANHSACH DANHSACH = new DANHSACH();
+        DANHSACH.codecung(new chitiet(123, "Phong Vũ", "Sài Gòn"));
+        DANHSACH.codecung(new chitiet(456, "Minh Long", "Long An"));
+        DANHSACH.codecung(new chitiet(789, "FPT", "Hà Nội"));
+        DANHSACH.codecung(new chitiet(112, "Phương Hằng", "Công Viên Thủy Tinh"));
+        DANHSACH.codecung(new chitiet(113, "Phan Anh", "Hải Phòng"));
         while (true) {
             System.out.println("====Menu====");
             System.out.println("1. Them nha cung cap");
@@ -251,48 +249,41 @@ class DANHSACH {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    ds.themds();
+                    DANHSACH.themds();
                     break;
                 case 2:
-                    ds.xoads();
+                    DANHSACH.xoads();
                     break;
                 case 3:
-                    ds.timkiemds1();
+                    DANHSACH.timkiemds1();
                     break;
                 case 4:
-                    ds.xuatds();
+                    DANHSACH.xuatds();
                     break;
                 case 5:
-                	ds.demnhacungcap();
-                	break;
+                    DANHSACH.demnhacungcap();
+                    break;
                 case 6:
-                	//DANHSACH ds;
-                	//ds.haha();
-                	
-				cocc cc=new cocc();
-            		cc.haha();
-                
+                    cocc cc = new cocc();
+                    cc.haha();
                 case 0:
-	                System.exit(0); // Thoát khỏi chương trình
-	                break;
+                    System.exit(0); // Thoát khỏi chương trình
+                    break;
                 default:
                     System.out.println("Lua chon khong hop le. Vui long chon lai.");
                     break;
             }
         }
-        
     }
-    
-    public void demnhacungcap() {
-    	Scanner sc =new Scanner(System.in);
-    	int dem=0;
-    	System.out.println("-----------------------");
-    	for(int i=0; i<n ;i++) {
-    		ct[i].xuat1();
-    		dem++;
-    	}
-    	System.out.println("có "+dem+" nhà cung cấp");
+
+    public static void demnhacungcap() {
+        Scanner sc = new Scanner(System.in);
+        int dem = 0;
+        System.out.println("-----------------------");
+        for (int i = 0; i < n; i++) {
+            ct[i].xuat1();
+            dem++;
+        }
+        System.out.println("có " + dem + " nhà cung cấp");
     }
-   
-    
 }

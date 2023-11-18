@@ -1,21 +1,24 @@
 package doan;
 
+
+
 import java.util.Scanner;
 
 public  class tong {
 	public static void main(String[] args) {
-		cocc cc= new cocc();
-		cc.haha();
+		cocc cc;//= new cocc();
+		cocc .haha();
 		
 	}
 
+//Nguyễn đình hùng 3122410136
 	
 }
 class  cocc{
-	public  void haha() {
+	public static  void haha() {
 		DANHSACH ncc = new DANHSACH();
-		DANHSACH1 pn = new DANHSACH1();
-		DANHSACH2 ctpn = new DANHSACH2();
+		DANHSACH1 pn;// = new DANHSACH1();
+		DANHSACH9 ctpn;// = new DANHSACH2();
 		System.out.println("**************************");
 		System.out.println("*    MÀN HÌNH CHÍNH      *");
 		System.out.println("* 1. nhà cung cấp         *");
@@ -30,10 +33,10 @@ class  cocc{
 				ncc.goi1();
 				break;
 			case 2:
-				pn.goi2();
+				DANHSACH1.goi2();
 				break;
 			case 3:
-				ctpn.goi3();
+				DANHSACH9.goi9();
 				break;
 			case 0:
                 System.exit(0); // Thoát khỏi chương trình
